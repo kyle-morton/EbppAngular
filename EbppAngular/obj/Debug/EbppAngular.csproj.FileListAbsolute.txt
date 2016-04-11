@@ -1,0 +1,6 @@
+C:\Users\kmorton.WEHCO\Documents\Visual Studio 2013\Projects\EbppAngular\EbppAngular\bin\EbppAngular.dll.config
+C:\Users\kmorton.WEHCO\Documents\Visual Studio 2013\Projects\EbppAngular\EbppAngular\bin\EbppAngular.dll
+C:\Users\kmorton.WEHCO\Documents\Visual Studio 2013\Projects\EbppAngular\EbppAngular\bin\EbppAngular.pdb
+C:\Users\kmorton.WEHCO\Documents\Visual Studio 2013\Projects\EbppAngular\EbppAngular\obj\Debug\EbppAngular.csprojResolveAssemblyReference.cache
+C:\Users\kmorton.WEHCO\Documents\Visual Studio 2013\Projects\EbppAngular\EbppAngular\obj\Debug\EbppAngular.dll
+C:\Users\kmorton.WEHCO\Documents\Visual Studio 2013\Projects\EbppAngular\EbppAngular\obj\Debug\EbppAngular.pdb
