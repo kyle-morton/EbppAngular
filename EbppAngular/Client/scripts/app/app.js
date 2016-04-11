@@ -2,7 +2,7 @@
                          'authService', 'dataUsageService', 'mainCtrl', 'dataUsageCtrl']);
 
 // application configuration to integrate token into requests
-app.config(function ($httpProvider) {
+app.config(function ($httpProvider, $routeProvider, $locationProvider) {
     $httpProvider.interceptors.push('AuthInterceptor');
 });
 

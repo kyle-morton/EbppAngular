@@ -5,6 +5,8 @@
     vm.loggedIn = AuthToken.getToken() !== null;
     vm.user = {};
 
+    console.log("Path: " + $location.path());
+
     if (!vm.loggedIn) {
         $location.path('/login'); //redirect to login view
     } else {
@@ -19,6 +21,9 @@
                 //console.log("GetUser ERROR: " + JSON.stringify(error));
                 vm.error = 'Error Occurred: Couldn\'t Get User Information!';
             });
+    }
+    if ($location.path() == '/login' && vm.loggedIn) {
+        $location.path('/home');
     }
 
     vm.doLogin = function (isValid) {
