@@ -2,8 +2,24 @@
 .controller('mainController', function ($rootScope, $location, $scope, Auth, AuthToken, DataUsage) {
     var vm = this;
     vm.message = "";
-    vm.loggedIn = false;
+    vm.loggedIn = AuthToken.getToken() !== null;
     vm.user = {};
+
+    if (!vm.loggedIn) {
+        $location.path('/login'); //redirect to login view
+    } else {
+        Auth.getUser()
+            .success(function (response) {
+                //console.log("getUser: " + JSON.stringify(response));
+                vm.user.userId = response.userDetails.userId;
+                vm.user.site = response.userDetails.site;
+                vm.user.account = response.userDetails.account;
+            })
+            .error(function (error, status, headers, config, statusText) {
+                //console.log("GetUser ERROR: " + JSON.stringify(error));
+                vm.error = 'Error Occurred: Couldn\'t Get User Information!';
+            });
+    }
 
     vm.doLogin = function (isValid) {
 
@@ -25,6 +41,7 @@
                     vm.user.userId = response.userDetails.userId;
                     vm.user.site = response.userDetails.site;
                     vm.user.account = response.userDetails.account;
+                    $location.path('/');
                 })
                 .error(function (error, status, headers, config, statusText) {
                     //console.log("GetUser ERROR: " + JSON.stringify(error));
@@ -45,20 +62,7 @@
         vm.error = '';
         vm.EquipmentCheckMessage = null;
         vm.loggedIn = false;
-    };
-
-    vm.ActiveEquipmentCheck = function () {
-        DataUsage.CheckActiveEquipment()
-       .success(function (data) {
-           vm.EquipmentCheckMessage = data.resultMessage;
-       });
-    };
-
-    vm.GetActiveEquipment = function () {
-        DataUsage.GetActiveEquipment()
-       .success(function (data) {
-           vm.user.devices = data.userEquipment;
-       });
+        $location.path('/login');
     };
 
 });

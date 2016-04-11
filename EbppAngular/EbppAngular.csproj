@@ -57,6 +57,9 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Client\scripts\app\controllers\dataUsageCtrl.js" />
+    <Content Include="Client\scripts\app\views\home.html" />
+    <Content Include="Client\scripts\app\views\login.html" />
     <Content Include="Content\loading-bar.min.css" />
     <Content Include="Scripts\loading-bar.min.js" />
     <Content Include="Scripts\version.json" />
@@ -891,7 +894,6 @@
   <ItemGroup>
     <Folder Include="Client\images\" />
     <Folder Include="Client\scripts\app\directives\" />
-    <Folder Include="Client\scripts\app\views\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

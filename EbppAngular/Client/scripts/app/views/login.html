@@ -1,0 +1,23 @@
+﻿<div class="row">
+    <div class="col-md-4 col-sm-8 text-center center-block" style="float:none">
+        <div class="alert alert-danger" role="alert" ng-cloak ng-show="main.error">
+            <span class="sr-only">Error:</span>
+            {{main.error}}
+        </div>
+    </div>
+    <div class="col-md-4 col-sm-8 text-center center-block" style="float:none;" ng-cloak ng-show="!main.loggedIn">
+        <form class="form" name="loginForm" ng-submit="main.doLogin(loginForm.$valid)" novalidate>
+            <div class="form-group" ng-class="{ 'has-error' : loginForm.username.$invalid && !loginForm.username.$pristine }">
+                <label class="sr-only" for="usernameInput">Username</label>
+                <input type="text" class="form-control" id="usernameInput" name="username" ng-model="main.user.username" placeholder="Enter Username" ng-required="true" ng-minlength="3" ng-maxlength="20">
+                <p ng-cloak ng-show="loginForm.username.$invalid && !loginForm.username.$pristine" class="help-block">Username is required.</p>
+            </div>
+            <div class="form-group" ng-class="{ 'has-error' : loginForm.password.$invalid && !loginForm.password.$pristine }">
+                <label class="sr-only" for="passwordInput">Password</label>
+                <input type="password" class="form-control" id="passwordInput" name="password" ng-model="main.user.password" placeholder="Password" ng-required="true" ng-minlength="3">
+                <p ng-cloak ng-show="loginForm.password.$invalid && !loginForm.password.$pristine" class="help-block">Password is required</p>
+            </div>
+            <button type="submit" class="btn btn-primary" ng-disabled="loginForm.$invalid">Login</button>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,40 @@
+﻿<div ng-cloakng-show="main.loggedIn" class="row">
+    <div class="col-md-4 col-sm-8 text-center center-block" style="float:none">
+        <div class="alert alert-danger" role="alert" ng-cloak ng-show="main.error">
+            <span class="sr-only">Error:</span>
+            {{main.error}}
+        </div>
+    </div>
+    <div class="col-md-4 col-sm-8 text-center center-block" style="float:none">
+        <div class="alert alert-danger" role="alert" ng-cloak ng-show="dataUsage.error">
+            <span class="sr-only">Error:</span>
+            {{dataUsage.error}}
+        </div>
+    </div>
+    <div class="col-md-12 text-center" ng-cloak ng-show="main.user.userId">
+        <h5>Current User: {{main.user.username}} </h5>
+        <h5>User Id: {{main.user.userId}}</h5>
+        <h5>Site-Account: {{main.user.site}}-{{main.user.account}}</h5>
+    </div>
+    <div class="col-md-12 text-center" ng-cloak ng-show="main.loggedIn">
+        <div class="btn-group">
+            <button class="btn btn-default" ng-click="main.doLogout()">Logout</button>
+            <button class="btn btn-default" ng-click="dataUsage.ActiveEquipmentCheck()">Check Usage</button>
+            <button class="btn btn-default" ng-click="dataUsage.GetActiveEquipment()">Get Usage</button>
+        </div>
+    </div>
+
+    <div class="col-md-12 text-center" ng-cloak ng-show="dataUsage.EquipmentCheckMessage">
+        <p class="text-success"><strong>{{dataUsage.EquipmentCheckMessage}}</strong></p>
+    </div>
+    <div class="col-md-12 well" ng-cloak ng-show="dataUsage.user.devices">
+        <h4>Devices: {{dataUsage.user.devices.length}}</h4>
+        <div ng-repeat="device in dataUsage.user.devices">
+            <ul>Device: {{device.make}} {{device.model}}, {{device.mac}}</ul>
+            <ul ng-repeat="month in device.monthlyUsages">
+                <li>Month: {{month.displayDates}} {{month.usage}}/{{month.dataTotal}}</li>
+            </ul>
+        </div>
+    </div>
+</div>
+

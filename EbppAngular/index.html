@@ -19,59 +19,14 @@
     <div class="container">
         <br />
         <div class="row">
-            <div class="col-md-6 well center-block" style="float:none;" >
+            <div class="col-md-6 well center-block" style="float:none;">
                 <h4 class="text-center">EBPP Data Usage API</h4>
             </div>
-            <div class="col-md-4 col-sm-8 text-center center-block" style="float:none">
-                <div class="alert alert-danger" role="alert" ng-cloak ng-show="main.error">
-                    <span class="sr-only">Error:</span>
-                    {{main.error}}
-                </div>
-            </div> 
-            <div class="col-md-4 col-sm-8 text-center center-block" style="float:none;" ng-cloak ng-show="!main.loggedIn">
-                
-                <form class="form" name="loginForm" ng-submit="main.doLogin(loginForm.$valid)" novalidate>
-                    <div class="form-group" ng-class="{ 'has-error' : loginForm.username.$invalid && !loginForm.username.$pristine }">
-                        <label class="sr-only" for="usernameInput">Username</label>
-                        <input type="text" class="form-control" id="usernameInput" name="username" ng-model="main.user.username" placeholder="Enter Username" ng-required="true" ng-minlength="3" ng-maxlength="20">
-                        <p ng-cloak ng-show="loginForm.username.$invalid && !loginForm.username.$pristine" class="help-block">Username is required.</p>
-                    </div>
-                    <div class="form-group" ng-class="{ 'has-error' : loginForm.password.$invalid && !loginForm.password.$pristine }">
-                        <label class="sr-only" for="passwordInput">Password</label>
-                        <input type="password" class="form-control" id="passwordInput" name="password" ng-model="main.user.password" placeholder="Password" ng-required="true" ng-minlength="3">
-                        <p ng-cloak ng-show="loginForm.password.$invalid && !loginForm.password.$pristine" class="help-block">Password is required</p>
-                    </div>
-                    <button type="submit" class="btn btn-primary" ng-disabled="loginForm.$invalid">Login</button>
-                </form>
-            </div>
-
-            <div class="col-md-12 text-center" ng-cloak ng-show="main.user.userId">
-                <h5>Current User: {{main.user.username}} </h5>
-                <h5>User Id: {{main.user.userId}}</h5>
-                <h5>Site-Account: {{main.user.site}}-{{main.user.account}}</h5>
-            </div>
-            <div class="col-md-12 text-center" ng-cloak ng-show="main.loggedIn">
-                <div class="btn-group">
-                    <button class="btn btn-default" ng-click="main.doLogout()">Logout</button>
-                    <button class="btn btn-default" ng-click="main.ActiveEquipmentCheck()">Check Usage</button>
-                    <button class="btn btn-default" ng-click="main.GetActiveEquipment()">Get Usage</button>
-                </div>
-            </div>
-            <div class="col-md-12 text-center" ng-cloak ng-show="main.EquipmentCheckMessage">
-                <p class="text-success"><strong>{{main.EquipmentCheckMessage}}</strong></p>
-            </div>
-            <div class="col-md-12 well" ng-cloak ng-show="main.user.devices">
-                <h4>Devices: {{main.user.devices.length}}</h4>
-                <div ng-repeat="device in main.user.devices">
-                    <ul>Device: {{device.make}} {{device.model}}, {{device.mac}}</ul>
-                    <ul ng-repeat="month in device.monthlyUsages">
-                        <li>Month: {{month.displayDates}} {{month.usage}}/{{month.dataTotal}}</li>
-                    </ul>
-                </div>
-            </div>
-
         </div>
+        <div ng-view id="ngCenterView"></div>
     </div>
+
+
     
     <script type="text/javascript" src="/Scripts/jquery-1.9.1.min.js"></script>
     <script type="text/javascript" src="/Scripts/bootstrap.min.js"></script>
@@ -83,6 +38,8 @@
     <script type="text/javascript" src="Client/scripts/app/services/authService.js"></script>
     <script type="text/javascript" src="Client/scripts/app/services/dataUsageService.js"></script>
     <script type="text/javascript" src="Client/scripts/app/controllers/mainCtrl.js"></script>
+    <script type="text/javascript" src="Client/scripts/app/controllers/dataUsageCtrl.js"></script>
+    <script type="text/javascript" src="Client/scripts/app/app.routes.js"></script>
     <script type="text/javascript" src="Client/scripts/app/app.js"></script>
 
 </body>

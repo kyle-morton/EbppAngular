@@ -46,12 +46,6 @@ angular.module('authService', [])
 
 })
 
-
-
-
-
-
-
 //factory for token handling
 // inject $window to store token client-side in local-storage
 .factory('AuthToken', function ($window) {
@@ -103,6 +97,11 @@ angular.module('authService', [])
         console.log("RESPONSE ERROR: " + JSON.stringify(response));
         if (response.status == 400 && response.error == 'invalid_grant') 
             AuthToken.setToken(); //clear token
+        if (response.status == 401) {
+            AuthToken.setToken(); //clear token
+            $location.path('/login'); //redirect to login view
+        }
+
         return $q.reject(response);
     };
 
