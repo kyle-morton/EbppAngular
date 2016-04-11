@@ -9,7 +9,6 @@
         controller: 'dataUsageController',
         controllerAs: 'dataUsage'
     })
-
     //login page
 	.when('/login', {
 	    templateUrl: 'Client/scripts/app/views/login.html'

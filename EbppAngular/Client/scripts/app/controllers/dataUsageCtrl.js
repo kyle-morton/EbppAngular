@@ -7,15 +7,21 @@
 
     vm.ActiveEquipmentCheck = function () {
         DataUsage.CheckActiveEquipment()
-       .success(function (data) {
-           vm.EquipmentCheckMessage = data.resultMessage;
+       .then(function (response) {
+           vm.EquipmentCheckMessage = response.data.resultMessage;
+       },
+       function (error) {
+           console.log("CheckActiveEquipment Error: " + JSON.stringify(error));
        });
     };
 
     vm.GetActiveEquipment = function () {
         DataUsage.GetActiveEquipment()
-       .success(function (data) {
-           vm.user.devices = data.userEquipment;
+       .then(function (response) {
+           vm.user.devices = response.data.userEquipment;
+       },
+       function (error) {
+           console.log("CheckActiveEquipment Error: " + JSON.stringify(error));
        });
     };
 
