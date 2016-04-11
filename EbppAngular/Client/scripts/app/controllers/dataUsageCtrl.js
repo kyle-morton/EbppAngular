@@ -17,7 +17,6 @@
        .success(function (data) {
            vm.user.devices = data.userEquipment;
        });
-       //.error(function(;
     };
 
 });

@@ -5,15 +5,20 @@
     vm.loggedIn = AuthToken.getToken() !== null;
     vm.user = {};
 
+    console.log("main Controller...");
+
     if (!vm.loggedIn) {
         $location.path('/login'); //redirect to login view
     } else {
+        console.log("Get User...");
         Auth.getUser()
             .success(function (response) {
-                //console.log("getUser: " + JSON.stringify(response));
+                console.log("getUser: " + JSON.stringify(response));
                 vm.user.userId = response.userDetails.userId;
+                vm.user.username = response.userDetails.username;
                 vm.user.site = response.userDetails.site;
                 vm.user.account = response.userDetails.account;
+                console.log("User: " + JSON.stringify(vm.user));
             })
             .error(function (error, status, headers, config, statusText) {
                 //console.log("GetUser ERROR: " + JSON.stringify(error));
