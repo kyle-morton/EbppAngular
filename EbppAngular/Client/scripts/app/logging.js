@@ -67,7 +67,7 @@ loggingModule.factory(
                     type: "POST",
                     url: apiHost + 'Log/LogException',
                     contentType: "application/json",
-                    data: exceptionData
+                    data: JSON.stringify(exceptionData)
                 });
             } catch (loggingError) {
                 $log.warn("Error server-side logging failed");
