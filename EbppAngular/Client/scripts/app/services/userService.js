@@ -2,9 +2,9 @@
 .factory('User', function ($http, $q) {
     var userFactory = {};
 
-    //userFactory.getUserInformation = function () {
-    //    return $http.get
-    //};
+    userFactory.getUser = function () {
+
+    };
 
     return userFactory;
 });

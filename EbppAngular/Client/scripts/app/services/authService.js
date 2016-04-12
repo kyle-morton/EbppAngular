@@ -42,6 +42,10 @@ angular.module('authService', [])
         }
     };
 
+    authFactory.isUserLoggedIn = function () {
+        return AuthToken.getToken() !== null;
+    }
+
     return authFactory;
 
 })
@@ -94,7 +98,6 @@ angular.module('authService', [])
     //redirect to login if token not authenticated
     //Used if get 403 response (not auth)
     interceptorFactory.responseError = function (response) {
-        console.log("RESPONSE ERROR: " + JSON.stringify(response));
         if (response.status == 400 && response.error == 'invalid_grant') 
             AuthToken.setToken(); //clear token
         if (response.status == 401) {

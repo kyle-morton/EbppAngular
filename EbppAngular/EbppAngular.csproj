@@ -58,10 +58,13 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Client\scripts\app\controllers\dataUsageCtrl.js" />
+    <Content Include="Client\scripts\app\logging.js" />
     <Content Include="Client\scripts\app\views\home.html" />
     <Content Include="Client\scripts\app\views\login.html" />
     <Content Include="Content\loading-bar.min.css" />
     <Content Include="Scripts\loading-bar.min.js" />
+    <Content Include="Scripts\stacktrace-0.6.4.js" />
+    <Content Include="Scripts\stacktrace-0.6.4.min.js" />
     <Content Include="Scripts\version.json" />
     <Content Include="Scripts\errors.json" />
     <Content Include="Scripts\angular-touch.min.js.map" />
@@ -76,6 +79,7 @@
     <Content Include="Scripts\angular-animate.min.js.map" />
     <Content Include="Scripts\angular.min.js.map" />
     <Content Include="packages.config" />
+    <Content Include="Scripts\stacktrace.js.map" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

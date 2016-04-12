@@ -1,30 +1,25 @@
 ﻿angular.module('mainCtrl', [])
-.controller('mainController', function ($rootScope, $location, $scope, Auth, AuthToken, DataUsage) {
+.controller('mainController', function ($rootScope, $location, $scope, Auth, AuthToken) {
     var vm = this;
     vm.message = "";
-    vm.loggedIn = AuthToken.getToken() !== null;
+    vm.loggedIn = Auth.isUserLoggedIn();
     vm.user = {};
 
-    console.log("Path: " + $location.path());
-
-    if (!vm.loggedIn) {
-        $location.path('/login'); //redirect to login view
-    } else {
+    if (vm.loggedIn) {
         Auth.getUser()
-            .then(function (response) {
-                vm.user.userId = response.data.userDetails.userId;
-                vm.user.username = response.data.userDetails.username;
-                vm.user.site = response.data.userDetails.site;
-                vm.user.account = response.data.userDetails.account;
-            },
-            function (error, status, headers, config, statusText) {
-                //console.log("GetUser ERROR: " + JSON.stringify(error));
-                vm.error = 'Error Occurred: Couldn\'t Get User Information!';
-            });
+       .then(function (response) { vm.setUser(response.data.userDetails) },
+       function (error, status, headers, config, statusText) {
+           //console.log("GetUser ERROR: " + JSON.stringify(error));
+           vm.error = 'Error Occurred: Couldn\'t Get User Information!';
+       });
     }
-    if ($location.path() == '/login' && vm.loggedIn) {
-        $location.path('/home');
-    }
+   
+    vm.setUser = function (userDetails) {
+        vm.user.userId = userDetails.userId;
+        vm.user.username = userDetails.username;
+        vm.user.site = userDetails.site;
+        vm.user.account = userDetails.account;
+    };
 
     vm.doLogin = function (isValid) {
 

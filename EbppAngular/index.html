@@ -20,7 +20,8 @@
         <nav class="navbar navbar-default">
             <div class="container-fluid">
                 <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" 
+                            aria-expanded="false" ng-cloak ng-show="main.loggedIn">
                         <span class="sr-only">Toggle navigation</span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
@@ -28,14 +29,13 @@
                     </button>
                     <a class="navbar-brand" ng-href="/home">EBPP Data Usage API</a>
                 </div>
-                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" ng-cloak ng-show="main.loggedIn">
                     <ul class="nav navbar-nav navbar-right">
                         <li>
                             <a href="/home" ng-cloak ng-show="main.loggedIn">{{main.user.username}}</a>
                         </li>
                         <li>
                             <a href="/login" ng-click="main.doLogout()" ng-cloak ng-show="main.loggedIn">Logout</a>
-                            <a href="/login" ng-cloak ng-show="!main.loggedIn"></a>
                         </li>
                     </ul>
                 </div><!-- /.navbar-collapse -->
@@ -44,18 +44,22 @@
         <div class="col-md-10 center-block text-center" style="float:none;" ng-view id="ngCenterView"></div>
     </div>
     
+
     <script type="text/javascript" src="/Scripts/jquery-1.9.1.min.js"></script>
     <script type="text/javascript" src="/Scripts/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/Scripts/stacktrace-0.6.4.min.js"></script>
     <script type="text/javascript" src="/Scripts/angular.min.js"></script>
     <script type="text/javascript" src="/Scripts/angular-route.min.js"></script>
     <script type="text/javascript" src="/Scripts/angular-animate.min.js"></script>
     <script type="text/javascript" src="/Scripts/loading-bar.min.js"></script>
+    <script type="text/javascript" src="/Scripts/angular-ui/ui-bootstrap.min.js"></script>
     <script type="text/javascript" src="Client/scripts/app/app.routes.js"></script>
     <script type="text/javascript" src="Client/scripts/app/services/authService.js"></script>
     <script type="text/javascript" src="Client/scripts/app/services/dataUsageService.js"></script>
     <script type="text/javascript" src="Client/scripts/app/controllers/mainCtrl.js"></script>
     <script type="text/javascript" src="Client/scripts/app/controllers/dataUsageCtrl.js"></script>
     <script type="text/javascript" src="Client/scripts/app/app.routes.js"></script>
+    <script type="text/javascript" src="Client/scripts/app/logging.js"></script>
     <script type="text/javascript" src="Client/scripts/app/app.js"></script>
 
 </body>
