@@ -61,8 +61,6 @@ loggingModule.factory(
                     Cause: (cause || "")
                 };
 
-                console.log("Exception Data: " + JSON.stringify(exceptionData));
-
                 $.ajax({
                     type: "POST",
                     url: apiHost + 'Log/LogException',
@@ -77,3 +75,42 @@ loggingModule.factory(
         return (error);
     }]
 );
+
+loggingModule.factory(
+    "applicationLoggingService",
+    ["$log", "$window", function ($log, $window) {
+        return ({
+            error: function (message) {
+                // preserve default behaviour
+                $log.error.apply($log, arguments);
+                var exceptionData = {
+                    Url: $window.location.href,
+                    Message: message, Type: "error"
+                };
+                // send server side
+                $.ajax({
+                    type: "POST",
+                    url: apiHost + 'Log/LogException',
+                    contentType: "application/json",
+                    data: JSON.stringify(exceptionData)
+                });
+            },
+            debug: function (message) {
+                $log.log.apply($log, arguments);
+                console.log("Debug Message: " + message);
+                var logData = {
+                    Url: $window.location.href,
+                    Message: message, Type: "debug"
+                }
+                $.ajax({
+                    type: "POST",
+                    url: apiHost + 'Log/ClientLog',
+                    contentType: "application/json",
+                    data: JSON.stringify(logData)
+                });
+            }
+        });
+    }]
+);
+
+

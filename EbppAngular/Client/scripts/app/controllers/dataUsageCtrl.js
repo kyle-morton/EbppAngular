@@ -9,7 +9,6 @@
         DataUsage.CheckActiveEquipment()
        .then(function (response) {
            vm.EquipmentCheckMessage = response.data.resultMessage;
-           throw "SAMPLE EXCEPTION!!!!!";
        }, function (error) {
            //console.log("CheckActiveEquipment Error: " + JSON.stringify(error));
            vm.error = 'Error Occurred: Unable to retrieve usage data!';

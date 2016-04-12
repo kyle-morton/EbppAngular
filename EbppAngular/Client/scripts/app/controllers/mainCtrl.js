@@ -1,5 +1,5 @@
 ﻿angular.module('mainCtrl', [])
-.controller('mainController', function ($rootScope, $location, $scope, Auth, AuthToken) {
+.controller('mainController', function ($rootScope, $location, $scope, Auth, AuthToken, applicationLoggingService) {
     var vm = this;
     vm.message = "";
     vm.loggedIn = Auth.isUserLoggedIn();
@@ -27,6 +27,7 @@
             //set to processing, clear previous error msg
             vm.processing = true;
             vm.error = '';
+            //applicationLoggingService.error("Logging In User: " + vm.user.username);
             Auth.login(vm.user.username, vm.user.password)
             .then(function (response) {
                 //console.log("Login: " + JSON.stringify(response));

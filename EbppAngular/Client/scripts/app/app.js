@@ -1,5 +1,6 @@
 ﻿var app = angular.module('ebppApp', ['ngAnimate', 'app.routes', 'angular-loading-bar',
-                         'authService', 'dataUsageService', 'mainCtrl', 'dataUsageCtrl', 'logging']);
+                         'authService', 'dataUsageService', 'mainCtrl', 'dataUsageCtrl',
+                         'logging']);
 
 // application configuration to integrate token into requests
 app.config(function ($httpProvider, $routeProvider, $locationProvider) {
